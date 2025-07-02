@@ -1,7 +1,7 @@
 "use client"
 import { useRef, useState, useEffect } from "react"
 import { Calendar, University, GraduationCap, Award } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, easeOut } from "framer-motion"
 
 
 interface Formation {
@@ -80,6 +80,21 @@ const statusConfig = {
   planned: { label: "Prévu", color: "bg-orange-500", textColor: "text-orange-100" },
 }
 
+// Animation variants pour la liste et les cartes
+const listVariants = {
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+}
+
 export default function Formation() {
   const ref = useRef<HTMLDivElement | null>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -122,11 +137,16 @@ export default function Formation() {
         {/* Ligne de timeline (desktop uniquement) */}
         <div className="hidden lg:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500" />
 
-        <div className={`${isVisible ? "block" : "hidden"} space-y-6 lg:space-y-8`}>
+        <motion.div
+          variants={listVariants}
+          initial="hidden"
+          animate={isVisible ? "show" : "hidden"}
+          className={`${isVisible ? "block" : "hidden"} space-y-6 lg:space-y-8`}
+        >
           {formations.map((formation, index) => (
             <FormationCard key={formation.id} formation={formation} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   )
@@ -138,17 +158,18 @@ interface FormationCardProps {
   index: number
 }
 
-function FormationCard({ formation, index }: FormationCardProps) {
+function FormationCard({ formation}: FormationCardProps) {
   const typeInfo = typeConfig[formation.type]
   const statusInfo = statusConfig[formation.status]
   const TypeIcon = typeInfo.icon
 
   return (
     <motion.div
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.3 } } }}
+      variants={cardVariants}
+      
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false }}
+      viewport={{ once: true, amount: 0.3 }}
       className="relative lg:ml-20"
     >
       {/* Point de timeline (desktop) */}

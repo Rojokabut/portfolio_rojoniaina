@@ -16,16 +16,33 @@ export default function Footer() {
         {/* Navigation principale */}
         <nav className="w-full flex flex-col md:flex-row justify-between items-center mb-6">
           <ul className="flex flex-col md:flex-row gap-4 md:gap-16 text-lg font-normal w-full justify-between items-center md:items-start">
-            {['Projects', 'Services', 'About', 'Contact', 'Formation'].map((item, i) => (
-              <motion.li
-                key={item}
-                whileHover={{ y: -4, color: '#38bdf8' }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="cursor-pointer transition-colors duration-200"
-              >
-                {item}
-              </motion.li>
-            ))}
+            {['Projects', 'Services', 'About', 'Contact', 'Formation'].map((item) => {
+              // Map display name to section id
+              const idMap: Record<string, string> = {
+                Projects: 'projects',
+                Services: 'services',
+                About: 'about',
+                Contact: 'contact',
+                Formation: 'formation',
+              };
+              const handleScroll = () => {
+                const el = document.getElementById(idMap[item]);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              };
+              return (
+                <motion.li
+                  key={item}
+                  whileHover={{ y: -4, color: '#38bdf8' }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="cursor-pointer transition-colors duration-200"
+                  onClick={handleScroll}
+                >
+                  {item}
+                </motion.li>
+              );
+            })}
           </ul>
         </nav>
         {/* Icônes */}
@@ -44,10 +61,10 @@ export default function Footer() {
         {/* Liens légaux */}
         <div className="flex gap-4 md:gap-8 mb-6">
         {[ 
-          { icon: <Github size={20} />, link: "https://github.com/rojo-niaina", label: "GitHub" },
+          { icon: <Github size={20} />, link: "https://github.com/RojoKabut", label: "GitHub" },
           { icon: <Linkedin size={20} />, link: "https://linkedin.com/in/rojo-niaina", label: "LinkedIn" },
-          { icon: <Mail size={20} />, link: "mailto:rojo.niaina@gmail.com", label: "Email" },
-          { icon: <Smartphone size={20} />, link: "https://wa.me/261341234567", label: "WhatsApp" },
+          { icon: <Mail size={20} />, link: "mailto:rojoniainaravelomanana@gmail.com", label: "Email" },
+          { icon: <Smartphone size={20} />, link: "https://wa.me/+261340563335", label: "WhatsApp" },
         ].map(({ icon, link, label }, i) => (
           <motion.a
             key={i}

@@ -1,8 +1,7 @@
 "use client";
 
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
-import { FaGlobe, FaTwitter, FaGithub, FaFacebook } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { FaGithub, FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 
 export default function Contact() {
@@ -12,13 +11,6 @@ export default function Contact() {
       <div className="bg-[#18181b] text-white rounded-2xl p-4 md:p-8 md:w-1/3 w-full mb-4 md:mb-0 md:mr-8 shadow-lg flex flex-col gap-8">
         <div> 
           <h3 className="text-lg font-semibold mb-4">CONTACT INFO</h3>
-          <div className="flex items-start gap-4 mb-6">
-            <span className="bg-[#232329] p-3 rounded-lg"><MdEmail size={24} /></span>
-            <div>
-              <div className="text-xs text-gray-400">MAIL </div>
-              <div className="text-sm">rojoniainaravelomanana@gmail.com</div>
-            </div>
-          </div>
           <div className="flex items-start gap-4 mb-6">
             <span className="bg-[#232329] p-3 rounded-lg"><MdPhone size={24} /></span>
             <div>
@@ -45,7 +37,7 @@ export default function Contact() {
       </div>
       {/* Right: Contact Form */}
       <div className="bg-[#18181b] rounded-2xl p-4 md:p-8 md:w-2/3 w-full shadow-lg flex flex-col justify-center">
-        <h2 className="text-3xl font-bold mb-6 text-white">Let's work <span className="text-blue-500">together.</span></h2>
+        <h2 className="text-3xl font-bold mb-6 text-white">Let&apos;s work <span className="text-blue-500">together.</span></h2>
         <form className="space-y-6">
           <input type="text" placeholder="Name *" className="w-full bg-[#232329] text-white border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition placeholder-gray-400" />
           <input type="email" placeholder="Email *" className="w-full bg-[#232329] text-white border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition placeholder-gray-400" />

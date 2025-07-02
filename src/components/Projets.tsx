@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Github, Code2, Eye, ExternalLink } from "lucide-react";
+import { Github, Code2, ExternalLink } from "lucide-react";
 
 export default function Projets() {
   return (
@@ -74,7 +74,7 @@ export default function Projets() {
 
         {/* Projet 4 */}
         <ProjectCard
-          image="/capt_portfolio.jpg"
+          image="/portfolio.PNG"
           title="Portfolio"
           description="Ce portfolio présente mes projets, compétences et outils utilisés en développement web. Il est développé avec Next.js pour la performance, TypeScript pour la robustesse du code, et Tailwind CSS pour un design moderne et responsive."
           tags={["Next.js", "TypeScript", "Tailwind CSS"]}
@@ -89,7 +89,7 @@ export default function Projets() {
   );
 }
 
-function ProjectCard({ image, badge, badgeColor, title, description, tags, links, delay }: {
+function ProjectCard({ image, badge, title, description, tags, links, delay }: {
   image: string,
   badge?: string,
   badgeColor?: string,

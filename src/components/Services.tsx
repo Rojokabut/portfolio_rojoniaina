@@ -1,6 +1,6 @@
 "use client"
 
-import { Code, Layers, Monitor, Server, Shield, Smartphone, Users } from "lucide-react";
+import { Code, Server, Smartphone, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Services() {

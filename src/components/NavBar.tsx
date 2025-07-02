@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { Sun , Download, Menu, Github} from "lucide-react"
+import { Download, Menu, Github} from "lucide-react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 
@@ -51,7 +51,7 @@ export default function NavBar(){
                     <Menu className="text-white w-6 h-6"/>
                 </button>
                 <h1 className="text-2xl font-bold text-blue-400 drop-shadow-lg select-none">Portfolio</h1>
-                <div className="hidden lg:flex items-center space-x-6 text-white xl:text-base font-medium text-xs">
+                <div className="hidden lg:flex items-center space-x-3 text-white xl:text-base font-medium text-xs">
                     <NavLink href="#home">Accueil</NavLink>
                     <NavLink href="#about">À propos</NavLink>
                     <NavLink href="#services">Services</NavLink>
