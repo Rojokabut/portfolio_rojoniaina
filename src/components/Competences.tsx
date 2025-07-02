@@ -58,7 +58,7 @@ const skills = [
   },
   {
     name: "Tailwind CSS",
-    percent: 80,
+    percent: 85,
     color: "#38BDF8",
     icon: "https://www.svgrepo.com/show/374118/tailwind.svg",
     desc: "Création d'interfaces modernes et responsives avec Tailwind CSS.",
@@ -66,7 +66,7 @@ const skills = [
   },
   {
     name: "Framer Motion",
-    percent: 75,
+    percent: 80,
     color: "#E65AF5",
     icon: "/framer.svg",
     desc: "Animations fluides et interactives avec Framer Motion.",
@@ -176,6 +176,20 @@ const skills = [
   },
 ];
 
+// Fonction utilitaire pour convertir hex en rgb
+function hexToRgb(hex: string): string {
+  // Remove '#' if present
+  hex = hex.replace('#', '');
+  // Convert 3-digit hex to 6-digit
+  if (hex.length === 3) {
+    hex = hex.split('').map(x => x + x).join('');
+  }
+  const num = parseInt(hex, 16);
+  const r = (num >> 16) & 255;
+  const g = (num >> 8) & 255;
+  const b = num & 255;
+  return `${r}, ${g}, ${b}`;
+}
 
 function SkillCircle({ name, percent, color, icon, delay }: { name: string, percent: number, color: string, icon: string, delay: number }) {
   const iconSize = 72;
@@ -229,6 +243,13 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
               stroke="#222"
               fill="none"
               strokeWidth={stroke}
+              cx={radius}
+              cy={radius}
+              r={normalizedRadius}
+            />
+            <circle
+              fill={color.startsWith('#') ? `rgba(${hexToRgb(color)}, 0.35)` : color}
+              stroke="none"
               cx={radius}
               cy={radius}
               r={normalizedRadius}
