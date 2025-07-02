@@ -1,6 +1,6 @@
 "use client";
 
-import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { MdPhone, MdLocationOn } from "react-icons/md";
 import { FaGithub, FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 

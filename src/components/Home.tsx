@@ -2,8 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import React from "react";
 
 export default function Home() {
+  // Fonction de scroll smooth vers la section contact
+  const handleContactScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <main id="home" className="flex flex-col items-center justify-center min-h-[80vh] w-full bg-transparent pt-24">
       <motion.div
@@ -61,6 +70,7 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.7 } } }}
+            onClick={handleContactScroll}
           >
             Me contacter
           </motion.a>

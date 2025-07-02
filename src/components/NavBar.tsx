@@ -41,7 +41,7 @@ export default function NavBar(){
                 initial={{ y: -40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 80, damping: 12 }}
-                className="w-full flex justify-between items-center py-4 px-6 md:px-10 bg-white/10 backdrop-blur-md shadow-lg border-b border-blue-400/10 fixed top-0 left-0 z-50"
+                className="w-full flex justify-between items-center py-4 px-2 md:px-10 bg-white/10 backdrop-blur-md shadow-lg border-b border-blue-400/10 fixed top-0 left-0 z-50"
             >
                 <button
                     className="lg:hidden block bg-gray-800 p-2 rounded-xl cursor-pointer hover:bg-gray-950"
