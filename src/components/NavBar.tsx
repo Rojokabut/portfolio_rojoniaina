@@ -94,7 +94,7 @@ export default function NavBar(){
                     </button>
                     <nav className="flex flex-col space-y-4 text-white text-lg font-medium">
                         <NavLink href="#home" onClick={() => setSidebarOpen(false)}>Accueil</NavLink>
-                        <NavLink href="#statistique" onClick={() => setSidebarOpen(false)}>Statistique</NavLink>
+                        {/* <NavLink href="#statistique" onClick={() => setSidebarOpen(false)}>Statistique</NavLink> */}
                         <NavLink href="#about" onClick={() => setSidebarOpen(false)}>À propos</NavLink>
                         <NavLink href="#services" onClick={() => setSidebarOpen(false)}>Services</NavLink>
                         <NavLink href="#skills" onClick={() => setSidebarOpen(false)}>Compétences</NavLink>

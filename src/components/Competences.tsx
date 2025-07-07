@@ -200,7 +200,7 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
 
   // Ajout pour l'animation
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   const [displayPercent, setDisplayPercent] = useState(0);
 
   useEffect(() => {
@@ -224,6 +224,7 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
 
   return (
     <motion.div
+      viewport={{ once: false }}
       ref={ref}
       className="flex flex-col items-center bg-black/30 rounded-xl p-4 sm:p-6 shadow-md w-40 sm:w-48 max-w-xs group backdrop-blur-md border border-white/10"
       whileHover={{ y: -8, scale: 1.04, boxShadow: "0 4px 32px 0 #38bdf855" }}
@@ -284,7 +285,7 @@ export default function Competences() {
       className="w-full max-w-8xl mx-auto my-16 p-8 bg-slate-900/80 rounded-2xl shadow-lg"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: false }}
       variants={{
         hidden: {},
         show: {
