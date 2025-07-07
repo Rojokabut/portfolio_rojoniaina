@@ -1,8 +1,9 @@
 "use client"
 import Link from "next/link"
-import { Download, Menu, Github} from "lucide-react"
+import { Download, Menu} from "lucide-react"
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { FaGithub } from "react-icons/fa"
 
 function handleSmoothScroll(href: string, onClick?: () => void) {
     return (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -41,7 +42,7 @@ export default function NavBar(){
                 initial={{ y: -40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 80, damping: 12 }}
-                className="w-full flex justify-between items-center py-4 px-2 md:px-10 bg-white/10 backdrop-blur-md shadow-lg border-b border-blue-400/10 fixed top-0 left-0 z-50"
+                className="w-full flex justify-between items-center py-4 px-2 md:px-10  backdrop-blur-md fixed top-0 left-0 z-50"
             >
                 <button
                     className="lg:hidden block bg-gray-800 p-2 rounded-xl cursor-pointer hover:bg-gray-950"
@@ -50,7 +51,7 @@ export default function NavBar(){
                 >
                     <Menu className="text-white w-6 h-6"/>
                 </button>
-                <h1 className="text-2xl font-bold text-blue-400 drop-shadow-lg select-none">Portfolio</h1>
+                <h1 className="text-2xl font-bold text-blue-400 drop-shadow-lg select-none">Rojo Niaina</h1>
                 <div className="hidden lg:flex items-center space-x-3 text-white xl:text-base font-medium text-xs">
                     <NavLink href="#home">Accueil</NavLink>
                     <NavLink href="#about">À propos</NavLink>
@@ -62,9 +63,9 @@ export default function NavBar(){
                 </div>
                 
                 <div className="flex space-x-2 items-center">
-                   <Link href='https://github.com/Rojokabut' className="bg-gray-900 hover:bg-gray-950 px-4 py-2  flex space-x-1 rounded-xl items-center">
-                        <Github width={16} height={16} className="text-white"/>
-                        <span className="text-gray-200">Github</span>
+                   <Link href='https://github.com/Rojokabut' className="bg-gray-900 hover:bg-gray-950 px-4 py-2  flex md:space-x-1 rounded-xl items-center">
+                        <FaGithub className="text-white w-6 h-6"/>
+                        <span className="text-gray-200 hidden md:block">Github</span>
                    </Link>
                     
                     <button className="hidden md:flex space-x-2 items-center bg-gradient-to-r from-pink-500 to-blue-500 text-white px-4 py-2 rounded-lg hover:from-pink-600 hover:to-blue-600 transition font-semibold shadow-lg">

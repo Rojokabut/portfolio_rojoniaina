@@ -58,7 +58,25 @@ export default function Home() {
           }}
         >
           <motion.span className="text-lg text-blue-400" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.3 } } }}>Hello, I&apos;m</motion.span>
-          <motion.h1 className="text-3xl md:text-4xl font-bold text-white" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.4 } } }}>Rojo Niaina</motion.h1>
+          <motion.h1 className="text-3xl md:text-4xl font-bold text-white" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.4 } } }}>
+            {"Rojo Niaina".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: [0, -10, 0] }}
+                transition={{
+                  delay: 0.45 + i * 0.07,
+                  duration: 1.6,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut"
+                }}
+                style={{ display: "inline-block" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.h1>
           <motion.h2 className="text-xl md:text-2xl font-semibold text-blue-300" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.5 } } }}>And I&apos;m a <span className="text-blue-400">FullStack Developer</span></motion.h2>
           <motion.p className="text-gray-300 max-w-md" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.6 } } }}>
             Passionate Full-Stack Developer driven by technological innovation and a commitment to excellence in web and mobile development.
