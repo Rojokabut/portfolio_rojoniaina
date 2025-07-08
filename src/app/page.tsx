@@ -14,7 +14,7 @@ import Formation from "@/components/formation"
 
 export default function HomePage(){
   return(
-    <div className="min-h-screen w-full bg-transparent ">
+    <div className="min-h-screen w-full bg-white dark:bg-transparent">
       <div className="relative h-screen">
         <NavBar />
         <Home />
