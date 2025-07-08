@@ -176,17 +176,17 @@ function FormationCard({ formation}: FormationCardProps) {
       <div className="hidden lg:block absolute -left-[70px] top-6 w-4 h-4 bg-white rounded-full border-4 border-blue-500 shadow-lg" />
 
       {/* Carte */}
-      <div className="bg-gray-900 p-6 rounded-2xl shadow-lg border border-blue-950 hover:border-blue-800 transition-all duration-300 group">
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 transition-all duration-300 group relative">
         {/* En-tête avec statut */}
         <div className="flex justify-between items-start mb-4">
-          <div className={`flex items-center space-x-3 p-3 rounded-xl ${formation.bgColor}`}>
-            <TypeIcon size={24} className={formation.color} />
-            <span className="text-white font-semibold">
+          <div className="flex items-center space-x-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-900">
+            <TypeIcon size={24} className="text-blue-500 dark:text-gray-100" />
+            <span className="text-blue-700 font-semibold dark:text-gray-100">
               {formation.type.charAt(0).toUpperCase() + formation.type.slice(1)}
             </span>
           </div>
 
-          <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusInfo.color} ${statusInfo.textColor}`}>
+          <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusInfo.color} text-white`}>
             {statusInfo.label}
           </span>
         </div>
@@ -195,25 +195,22 @@ function FormationCard({ formation}: FormationCardProps) {
         <div className="space-y-3">
           {/* Date */}
           <div className="flex items-center space-x-3">
-            <Calendar size={18} className="text-blue-400 flex-shrink-0" />
-            <span className="text-gray-300 font-medium">{formation.date}</span>
+            <Calendar size={18} className="text-blue-400 dark:text-gray-100 flex-shrink-0" />
+            <span className="text-gray-700 dark:text-gray-100 font-medium">{formation.date}</span>
           </div>
 
           {/* Diplôme */}
           <div className="flex items-start space-x-3">
-            <GraduationCap size={18} className="text-blue-400 flex-shrink-0 mt-0.5" />
-            <span className="text-white font-semibold leading-relaxed">{formation.diplome}</span>
+            <GraduationCap size={18} className="text-blue-400 dark:text-gray-100 flex-shrink-0 mt-0.5" />
+            <span className="text-gray-900 dark:text-gray-100 font-semibold leading-relaxed">{formation.diplome}</span>
           </div>
 
           {/* École */}
           <div className="flex items-center space-x-3">
-            <University size={18} className="text-blue-400 flex-shrink-0" />
-            <span className="text-gray-300">{formation.ecole}</span>
+            <University size={18} className="text-blue-400 dark:text-gray-100 flex-shrink-0" />
+            <span className="text-gray-700 dark:text-gray-100">{formation.ecole}</span>
           </div>
         </div>
-
-        {/* Effet hover */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
     </motion.div>
   )

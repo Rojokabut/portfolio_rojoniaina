@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Experience() {
   return (
     <motion.section
-      className="w-full max-w-full md:max-w-4xl mx-auto my-8 md:my-16 p-4 md:p-8 bg-white/80 rounded-2xl shadow-lg"
+      className="w-full max-w-full md:max-w-4xl mx-auto my-8 md:my-16 p-4 md:p-8 rounded-2xl shadow-sm"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
@@ -17,7 +17,7 @@ export default function Experience() {
       }}
     >
       <motion.h2
-        className="text-3xl font-bold mb-6 text-green-700 text-center"
+        className="text-3xl font-bold mb-6 text-[var(--primary)] text-center"
         variants={{ hidden: { opacity: 0, y: -30 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8 } } }}
       >
         Expérience
@@ -58,12 +58,12 @@ function ExperienceCard({ title, period, items, delay }: {
 }) {
   return (
     <motion.div
-      className="bg-green-50 rounded-xl p-6 shadow group hover:scale-105 hover:shadow-green-300/30 transition-all duration-300 border border-green-100/60"
+      className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm group hover:shadow-md hover:border-[var(--primary)] transition-all duration-300 border border-gray-200 dark:border-gray-700"
       variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8, delay } } }}
       whileHover={{ y: -8, scale: 1.04, boxShadow: "0 4px 32px 0 #4ade8055" }}
       transition={{ type: 'spring', stiffness: 300 }}
     >
-      <h3 className="text-xl font-semibold text-green-600 mb-2 group-hover:text-green-800 transition-colors duration-300">{title}</h3>
+      <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">{title}</h3>
       <p className="text-gray-700">{period}</p>
       <ul className="list-disc pl-5 text-gray-700 mt-2">
         {items.map((item, i) => (

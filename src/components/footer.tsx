@@ -6,7 +6,7 @@ import { Github, Linkedin, Mail, Smartphone } from "lucide-react";
 export default function Footer() {
   return (
     <motion.footer
-      className="bg-[#181A1B] text-gray-300 py-6 md:py-10 px-2 md:px-4"
+      className="bg-[#181A1B] dark:bg-gray-900 text-gray-300 dark:text-gray-100 py-6 md:py-10 px-2 md:px-4"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", duration: 1 }}
@@ -50,7 +50,7 @@ export default function Footer() {
           {[1,2,3,4].map((i) => (
             <motion.div
               key={i}
-              className="bg-[#232526] p-3 rounded-lg"
+              className="bg-[#232526] dark:bg-gray-800 p-3 rounded-lg"
               whileHover={{ scale: 1.15, boxShadow: "0 0 16px #38bdf855" }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
@@ -71,7 +71,7 @@ export default function Footer() {
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#232526] p-3 rounded-lg text-white"
+            className="bg-[#232526] dark:bg-gray-800 p-3 rounded-lg text-white"
             whileHover={{ scale: 1.15, boxShadow: "0 0 16px #38bdf855" }}
             transition={{ type: 'spring', stiffness: 300 }}
             aria-label={label}

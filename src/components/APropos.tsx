@@ -10,7 +10,7 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="relative flex flex-col min-h-screen lg:flex-row items-center justify-center gap-6 lg:gap-12 bg-slate-900/80 rounded-3xl p-8 lg:p-16 shadow-2xl overflow-hidden border border-blue-500/10 mt-16"
+      className="relative flex flex-col min-h-screen lg:flex-row items-center justify-center gap-6 lg:gap-12 bg-white dark:bg-gray-900 rounded-3xl p-8 lg:p-16 shadow-sm overflow-hidden  mt-16"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
@@ -56,29 +56,29 @@ export default function About() {
         className="flex-1 max-w-xl space-y-6"
         variants={{ hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0, transition: { type: "spring", duration: 0.8, delay: 0.2 } } }}
       >
-        <motion.h2 className="text-lg uppercase tracking-widest text-cyan-400 font-semibold mb-2" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.3 } } }}>Let me introduce myself</motion.h2>
-        <motion.h1 className="text-4xl font-bold text-white mb-4" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.4 } } }}>About me</motion.h1>
-        <motion.p className="text-slate-300 text-lg leading-relaxed" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.5 } } }}>
+        <motion.h2 className="text-lg uppercase tracking-widest text-[var(--primary)] font-semibold mb-2" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.3 } } }}>Let me introduce myself</motion.h2>
+        <motion.h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.4 } } }}>About me</motion.h1>
+        <motion.p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.5 } } }}>
           A journey shaped by curiosity and continuous learning.<br />
           I&apos;m <span className="font-bold text-cyan-400">Rojo Niaina</span>, a passionate Full-Stack Developer focused on delivering innovative and high-quality web and mobile applications. I love building seamless user experiences using modern technologies like React, Node.js, and Tailwind CSS. Whether it&apos;s crafting a beautiful interface or designing a solid backend, I always aim for performance, clarity, and innovation.
         </motion.p>
         <motion.div className="mt-4" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.6 } } }}>
-          <span className="block text-slate-400 mb-1 font-semibold">Contact</span>
-          <span className="text-slate-200">Interested in working together or starting a new project? Feel free to reach out — I&apos;m always open to exciting opportunities.<br />
-            <a href="mailto:rojo.niaina@gmail.com" className="text-cyan-400 underline">rojonianaravelomanana@gmail.com</a>
+          <span className="block text-gray-500 mb-1 font-semibold">Contact</span>
+          <span className="text-gray-700 dark:text-gray-300">Interested in working together or starting a new project? Feel free to reach out — I&apos;m always open to exciting opportunities.<br />
+            <a href="mailto:rojo.niaina@gmail.com" className="text-[var(--primary)] underline">rojonianaravelomanana@gmail.com</a>
           </span>
         </motion.div>
         <motion.div className="flex flex-wrap gap-4 mt-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.7 } } }}>
-          <a href="https://www.linkedin.com/in/rojoniaina-ravelomanana-6351782a2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+          <a href="https://www.linkedin.com/in/rojoniaina-ravelomanana-6351782a2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)]/10 text-[var(--primary)] font-medium border border-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition">
             <Linkedin size={20} /> LinkedIn
           </a>
-          <a href="https://github.com/RojoKabut" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 text-white font-medium hover:bg-gray-900 transition">
+          <a href="https://github.com/RojoKabut" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-50 text-gray-800 font-medium border border-gray-200 hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] transition">
             <Github size={20} /> GitHub
           </a>
-          <a href="mailto:rojoniainaravelomanana@gmail.com" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition">
+          <a href="mailto:rojoniainaravelomanana@gmail.com" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--primary)]/10 text-[var(--primary)] font-medium border border-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition">
             <Mail size={20} /> Email
           </a>
-          <a href="https://wa.me/+261340563335" target="_blank" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500 text-white font-medium hover:bg-green-600 transition">
+          <a href="https://wa.me/+261340563335" target="_blank" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-50 text-green-700 font-medium border border-green-200 hover:bg-green-100 hover:text-green-900 transition">
             <FaWhatsapp size={20} /> WhatsApp
           </a>
         </motion.div>

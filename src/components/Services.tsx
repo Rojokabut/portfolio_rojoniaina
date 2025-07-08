@@ -9,15 +9,15 @@ export default function Services() {
       <div className="flex flex-col lg:flex-row w-full max-w-6xl gap-4 md:gap-12 justify-center items-start">
         {/* Left: Intro text and button */}
         <div className="flex-1 flex flex-col justify-center items-start max-w-xs md:max-w-sm lg:sticky top-24">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Things I do for you that simply make your software better.</h2>
-          <p className="text-gray-400 mb-6">Various elements: server-side, UI, Microservices, cloud, all the stages, even people.</p>
-          <button className="px-6 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition mb-2">See all services</button>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-50 mb-4">Things I do for you that simply make your software better.</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">Various elements: server-side, UI, Microservices, cloud, all the stages, even people.</p>
+          <button className="px-6 py-2 rounded-lg bg-[var(--primary)] text-white font-semibold shadow hover:brightness-95 transition mb-2">See all services</button>
         </div>
         {/* Right: Services grid */}
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
           {/* General code (highlighted) */}
           <motion.div
-            className="bg-blue-200 text-gray-900 rounded-xl p-4 md:p-8 shadow-lg min-h-[160px] md:min-h-[200px] rotate-2 flex flex-col items-start justify-between animate-fade-in-up"
+            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 rounded-xl p-4 md:p-8 shadow-sm min-h-[160px] md:min-h-[200px] border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-[var(--primary)] flex flex-col items-start justify-between animate-fade-in-up transition-all rotate-3"
             whileHover={{ scale: 1.04 }}
           >
             <Code size={32} className="mb-4" />
@@ -29,7 +29,7 @@ export default function Services() {
           </motion.div>
           {/* Code systems */}
           <motion.div
-            className="bg-slate-900/80 text-white rounded-xl p-4 md:p-8 shadow-lg min-h-[160px] md:min-h-[200px] flex flex-col items-start justify-between animate-fade-in-up"
+            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 rounded-xl p-4 md:p-8 shadow-sm min-h-[160px] md:min-h-[200px] border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-[var(--primary)] flex flex-col items-start justify-between animate-fade-in-up transition-all"
             whileHover={{ scale: 1.04 }}
           >
             <Server size={32} className="text-blue-200 mb-4" />
@@ -41,7 +41,7 @@ export default function Services() {
           </motion.div>
           {/* DevOps */}
           <motion.div
-            className="bg-slate-900/80 text-white rounded-xl p-4 md:p-8 shadow-lg min-h-[160px] md:min-h-[200px] flex flex-col items-start justify-between animate-fade-in-up"
+            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 rounded-xl p-4 md:p-8 shadow-sm min-h-[160px] md:min-h-[200px] border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-[var(--primary)] flex flex-col items-start justify-between animate-fade-in-up transition-all"
             whileHover={{ scale: 1.04 }}
           >
             <Smartphone size={32} className="text-blue-200 mb-4" />
@@ -53,7 +53,7 @@ export default function Services() {
           </motion.div>
           {/* Agile consulting */}
           <motion.div
-            className="bg-slate-900/80 text-white rounded-xl p-4 md:p-8 shadow-lg min-h-[160px] md:min-h-[200px] flex flex-col items-start justify-between animate-fade-in-up"
+            className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 rounded-xl p-4 md:p-8 shadow-sm min-h-[160px] md:min-h-[200px] border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-[var(--primary)] flex flex-col items-start justify-between animate-fade-in-up transition-all"
             whileHover={{ scale: 1.04 }}
           >
             <Users size={32} className="text-blue-200 mb-4" />

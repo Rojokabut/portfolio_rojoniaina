@@ -144,7 +144,7 @@ const skills = [
   // 🛠️ Outils & Environnement
   {
     name: "Git",
-    percent: 70,
+    percent: 85,
     color: "#F05032",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
     desc: "Gestion de version distribuée avec Git.",
@@ -224,10 +224,11 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
 
   return (
     <motion.div
+      id="skills"
       viewport={{ once: false }}
       ref={ref}
-      className="flex flex-col items-center bg-black/30 rounded-xl p-4 sm:p-6 shadow-md w-40 sm:w-48 max-w-xs group backdrop-blur-md border border-white/10"
-      whileHover={{ y: -8, scale: 1.04, boxShadow: "0 4px 32px 0 #38bdf855" }}
+      className="flex flex-col items-center bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-6 shadow-sm w-40 sm:w-48 max-w-xs group border border-gray-200 dark:border-gray-700"
+      whileHover={{ y: -8, scale: 1.04, boxShadow: '0 4px 32px 0 #38bdf855' }}
       transition={{ type: 'spring', stiffness: 300 }}
       variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8, delay } } }}
     >
@@ -241,15 +242,15 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
             width={radius * 2}
           >
             <circle
-              stroke="#222"
-              fill="none"
+              stroke="#e5e7eb"
+              fill="#f3f4f6"
               strokeWidth={stroke}
               cx={radius}
               cy={radius}
               r={normalizedRadius}
             />
             <circle
-              fill={color.startsWith('#') ? `rgba(${hexToRgb(color)}, 0.35)` : color}
+              fill={color.startsWith('#') ? `rgba(${hexToRgb(color)}, 0.18)` : color}
               stroke="none"
               cx={radius}
               cy={radius}
@@ -265,48 +266,39 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
               cx={radius}
               cy={radius}
               r={normalizedRadius}
-              style={{ transition: "stroke-dashoffset 0.2s" }}
+              style={{ transition: 'stroke-dashoffset 0.2s' }}
             />
           </svg>
-          <span className="absolute top-1/2 left-1/2 z-20 text-white font-bold text-xs" style={{ transform: 'translate(-50%, -50%)' }}>
+          <span className="absolute top-1/2 left-1/2 z-20 text-blue-600 font-bold text-xs" style={{ transform: 'translate(-50%, -50%)' }}>
             {displayPercent}%
           </span>
         </div>
       </div>
-      <div className="text-white text-lg font-semibold mb-1">{name}</div>
+      <div className="text-gray-900 dark:text-gray-200 text-lg font-semibold mb-1">{name}</div>
     </motion.div>
   );
 }
 
 export default function Competences() {
   return (
-    <motion.section
-      id="skills"
-      className="w-full max-w-8xl mx-auto my-16 p-8 bg-slate-900/80 rounded-2xl shadow-lg"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: false }}
-      variants={{
-        hidden: {},
-        show: {
-          transition: { staggerChildren: 0.12, delayChildren: 0.2 }
-        }
-      }}
-    >
-      <motion.h2
-        className="text-3xl font-bold mb-10 text-white text-center"
-        variants={{ hidden: { opacity: 0, y: -30 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8 } } }}
-      >
-        Skills
-      </motion.h2>
+    <section className="w-full max-w-5xl mx-auto py-12 px-4">
+      <h2 className="text-3xl font-bold mb-8 text-[var(--primary)] text-center">Compétences</h2>
       <motion.div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-10 justify-items-center"
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.3 } } }}
       >
         {skills.map((skill, i) => (
-          <SkillCircle key={skill.name} {...skill} delay={0.1 + i * 0.05} />
+          <motion.div
+            key={skill.name}
+            className="rounded-xl flex flex-col items-center p-4 w-full max-w-[140px] hover:border-[var(--primary)] transition-all"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 + i * 0.04, duration: 0.6, type: 'spring' }}
+          >
+            <SkillCircle {...skill} delay={0.1 + i * 0.05} />
+          </motion.div>
         ))}
       </motion.div>
-    </motion.section>
+    </section>
   );
 } 

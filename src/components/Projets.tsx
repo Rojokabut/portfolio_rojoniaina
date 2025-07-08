@@ -8,7 +8,7 @@ export default function Projets() {
   return (
     <motion.section
       id="projects"
-      className="w-full bg-slate-900/80 border-blue-500/10 my-16 p-4 md:p-8 rounded-2xl "
+      className="w-full my-16 p-4 md:p-8 rounded-2xl"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
@@ -20,7 +20,7 @@ export default function Projets() {
       }}
     >
       <motion.h2
-        className="text-3xl font-bold mb-10 text-white text-center"
+        className="text-3xl font-bold mb-10 text-gray-900 dark:text-gray-50 text-center"
         variants={{ hidden: { opacity: 0, y: -30 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8 } } }}
       >
         Projets
@@ -111,7 +111,7 @@ function ProjectCard({ image, badge, title, description, tags, links, delay }: {
 
   return (
     <motion.div
-      className="bg-slate-900 rounded-xl p-0 shadow-sm flex flex-col border border-slate-800 hover:border-blue-500 transition-all duration-200"
+      className="bg-white dark:bg-gray-900 rounded-xl p-0 shadow-sm flex flex-col border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-[var(--primary)] transition-all duration-200"
       variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8, delay } } }}
       transition={{ type: 'spring', stiffness: 300 }}
     >
@@ -124,11 +124,11 @@ function ProjectCard({ image, badge, title, description, tags, links, delay }: {
         )}
       </div>
       <div className="p-5 flex flex-col flex-1">
-        <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors duration-300">{title}</h3>
-        <p className="text-gray-300 mb-3 text-sm leading-relaxed">{description}</p>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50 mb-1 group-hover:text-blue-600 transition-colors duration-300">{title}</h3>
+        <p className="text-gray-700 dark:text-gray-300 mb-3 text-sm leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-2 mb-3">
           {tags.map((tag, i) => (
-            <span key={i} className="bg-slate-800 border border-slate-700 text-gray-200 text-xs px-2 py-0.5 rounded-full font-medium">{tag}</span>
+            <span key={i} className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-xs px-2 py-0.5 rounded-full font-medium">{tag}</span>
           ))}
         </div>
         <div className="flex gap-2 mt-auto">
@@ -137,7 +137,7 @@ function ProjectCard({ image, badge, title, description, tags, links, delay }: {
               key={i}
               href={link.href}
               target="_blank"
-              className="flex-1 border border-blue-500 bg-slate-900 text-blue-300 text-sm font-semibold py-2 rounded-lg text-center transition hover:bg-blue-950 hover:text-blue-200 flex items-center justify-center gap-2"
+              className="flex-1 border border-[var(--primary)] bg-white text-[var(--primary)] text-sm font-semibold py-2 rounded-lg text-center transition hover:bg-[var(--primary)] hover:text-white hover:shadow flex items-center justify-center gap-2"
             >
               {getIcon(link.label)}
               <span>{link.label}</span>
