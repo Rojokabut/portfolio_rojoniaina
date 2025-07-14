@@ -49,6 +49,14 @@ const skills = [
     category: "Front-end",
   },
   {
+    name: "React Native",
+    percent: 75,
+    color: "#61DAFB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    desc: "Développement d'applications mobiles multiplateformes.",
+    category: "Front-end",
+  },
+  {
     name: "Next.js",
     percent: 80,
     color: "#000000",
@@ -70,6 +78,14 @@ const skills = [
     color: "#E65AF5",
     icon: "/framer.svg",
     desc: "Animations fluides et interactives avec Framer Motion.",
+    category: "Front-end",
+  },
+  {
+    name: "Bootstrap",
+    percent: 75,
+    color: "#7952B3",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+    desc: "Framework CSS populaire pour des interfaces réactives.",
     category: "Front-end",
   },
 
@@ -174,6 +190,46 @@ const skills = [
     desc: "Conception d'interfaces UI/UX.",
     category: "Outils",
   },
+  {
+    name: "VSCode",
+    percent: 90,
+    color: "#007ACC",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    desc: "Éditeur de code moderne et extensible.",
+    category: "Outils",
+  },
+  {
+    name: "Postman",
+    percent: 80,
+    color: "#FF6C37",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+    desc: "Test et développement d'API.",
+    category: "Outils",
+  },
+  {
+    name: "GitHub",
+    percent: 85,
+    color: "#181717",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    desc: "Hébergement et gestion de code source.",
+    category: "Outils",
+  },
+  {
+    name: "AWS",
+    percent: 60,
+    color: "#FF9900",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    desc: "Services cloud pour le déploiement et l'hébergement.",
+    category: "Outils",
+  },
+  {
+    name: "Vercel",
+    percent: 75,
+    color: "#000000",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+    desc: "Déploiement front-end rapide et moderne.",
+    category: "Outils",
+  },
 ];
 
 // Fonction utilitaire pour convertir hex en rgb
@@ -227,14 +283,14 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
       id="skills"
       viewport={{ once: false }}
       ref={ref}
-      className="flex flex-col items-center bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-6 shadow-sm w-40 sm:w-48 max-w-xs group border border-gray-200 dark:border-gray-700"
+      className="flex flex-col items-center bg-white dark:bg-transparent rounded-xl p-4 sm:p-6 shadow-sm w-40 sm:w-48 max-w-xs group border border-gray-200 dark:border-gray-700"
       whileHover={{ y: -8, scale: 1.04, boxShadow: '0 4px 32px 0 #38bdf855' }}
       transition={{ type: 'spring', stiffness: 300 }}
       variants={{ hidden: { opacity: 0, y: 40 }, show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 0.8, delay } } }}
     >
       <div className="flex flex-row items-center justify-center w-full mb-2 gap-4">
         <Image src={icon} alt={name} width={iconSize} height={iconSize} className="z-0 rounded-xl" />
-        <div className="relative flex items-center justify-center" style={{ width: radius * 2, height: radius * 2 }}>
+        {/* <div className="relative flex items-center justify-center" style={{ width: radius * 2, height: radius * 2 }}>
           <svg
             className="absolute top-1/2 left-1/2 z-10"
             style={{ transform: 'translate(-50%, -50%)' }}
@@ -272,7 +328,7 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
           <span className="absolute top-1/2 left-1/2 z-20 text-blue-600 font-bold text-xs" style={{ transform: 'translate(-50%, -50%)' }}>
             {displayPercent}%
           </span>
-        </div>
+        </div> */}
       </div>
       <div className="text-gray-900 dark:text-gray-200 text-lg font-semibold mb-1">{name}</div>
     </motion.div>
@@ -280,25 +336,43 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
 }
 
 export default function Competences() {
+  const categories = Array.from(new Set(skills.map(skill => skill.category)));
+
   return (
-    <section className="w-full max-w-5xl mx-auto py-12 px-4">
+    <section className="w-full max-w-6xl mx-auto py-12 px-4">
       <h2 className="text-3xl font-bold mb-8 text-[var(--primary)] text-center">Compétences</h2>
-      <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-10 justify-items-center"
-      >
-        {skills.map((skill, i) => (
-          <motion.div
-            key={skill.name}
-            className="rounded-xl flex flex-col items-center p-4 w-full max-w-[140px] hover:border-[var(--primary)] transition-all"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 + i * 0.04, duration: 0.6, type: 'spring' }}
-          >
-            <SkillCircle {...skill} delay={0.1 + i * 0.05} />
-          </motion.div>
-        ))}
-      </motion.div>
+
+      {categories.map((category, catIndex) => {
+        const categorySkills = skills.filter(skill => skill.category === category);
+
+        return (
+          <div key={category} className="mb-16">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6 border-l-4 border-[var(--primary)] pl-4">
+              {category}
+            </h3>
+
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              {categorySkills.map((skill, i) => (
+                <motion.div
+                  key={skill.name}
+                  className="rounded-xl flex flex-col items-center p-4 w-full max-w-[140px] hover:border-[var(--primary)] transition-all"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.04, duration: 0.6, type: 'spring' }}
+                >
+                  <SkillCircle {...skill} delay={i * 0.05} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        );
+      })}
     </section>
   );
-} 
+}
