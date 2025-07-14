@@ -233,21 +233,21 @@ const skills = [
 ];
 
 // Fonction utilitaire pour convertir hex en rgb
-function hexToRgb(hex: string): string {
-  // Remove '#' if present
-  hex = hex.replace('#', '');
-  // Convert 3-digit hex to 6-digit
-  if (hex.length === 3) {
-    hex = hex.split('').map(x => x + x).join('');
-  }
-  const num = parseInt(hex, 16);
-  const r = (num >> 16) & 255;
-  const g = (num >> 8) & 255;
-  const b = num & 255;
-  return `${r}, ${g}, ${b}`;
-}
+// function hexToRgb(hex: string): string {
+//   // Remove '#' if present
+//   hex = hex.replace('#', '');
+//   // Convert 3-digit hex to 6-digit
+//   if (hex.length === 3) {
+//     hex = hex.split('').map(x => x + x).join('');
+//   }
+//   const num = parseInt(hex, 16);
+//   const r = (num >> 16) & 255;
+//   const g = (num >> 8) & 255;
+//   const b = num & 255;
+//   return `${r}, ${g}, ${b}`;
+// }
 
-function SkillCircle({ name, percent, color, icon, delay }: { name: string, percent: number, color: string, icon: string, delay: number }) {
+function SkillCircle({ name, percent, icon, delay }: { name: string, percent: number, icon: string, delay: number }) {
   const iconSize = 72;
   const radius = 24; // petit cercle
   const stroke = 6;
@@ -275,8 +275,8 @@ function SkillCircle({ name, percent, color, icon, delay }: { name: string, perc
     }
   }, [isInView, percent, delay]);
 
-  const strokeDashoffset =
-    circumference - (displayPercent / 100) * circumference;
+  // const strokeDashoffset =
+  //   circumference - (displayPercent / 100) * circumference;
 
   return (
     <motion.div
@@ -342,7 +342,7 @@ export default function Competences() {
     <section className="w-full max-w-6xl mx-auto py-12 px-4">
       <h2 className="text-3xl font-bold mb-8 text-[var(--primary)] text-center">Compétences</h2>
 
-      {categories.map((category, catIndex) => {
+      {categories.map((category) => {
         const categorySkills = skills.filter(skill => skill.category === category);
 
         return (
