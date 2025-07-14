@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useInView, animate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const skills = [
   // 🧱 Fondations Web
@@ -232,32 +232,12 @@ const skills = [
   },
 ];
 
-// Fonction utilitaire pour convertir hex en rgb
-// function hexToRgb(hex: string): string {
-//   // Remove '#' if present
-//   hex = hex.replace('#', '');
-//   // Convert 3-digit hex to 6-digit
-//   if (hex.length === 3) {
-//     hex = hex.split('').map(x => x + x).join('');
-//   }
-//   const num = parseInt(hex, 16);
-//   const r = (num >> 16) & 255;
-//   const g = (num >> 8) & 255;
-//   const b = num & 255;
-//   return `${r}, ${g}, ${b}`;
-// }
-
 function SkillCircle({ name, percent, icon, delay }: { name: string, percent: number, icon: string, delay: number }) {
   const iconSize = 72;
-  const radius = 24; // petit cercle
-  const stroke = 6;
-  const normalizedRadius = radius - stroke / 2;
-  const circumference = normalizedRadius * 2 * Math.PI;
 
   // Ajout pour l'animation
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.5 });
-  const [displayPercent, setDisplayPercent] = useState(0);
 
   useEffect(() => {
     if (isInView) {
@@ -265,18 +245,11 @@ function SkillCircle({ name, percent, icon, delay }: { name: string, percent: nu
         duration: 1.2,
         delay: delay || 0,
         ease: "easeOut",
-        onUpdate: (latest: number) => {
-          setDisplayPercent(Math.round(latest));
-        },
+        onUpdate: () => {},
       });
       return () => controls.stop();
-    } else {
-      setDisplayPercent(0);
     }
   }, [isInView, percent, delay]);
-
-  // const strokeDashoffset =
-  //   circumference - (displayPercent / 100) * circumference;
 
   return (
     <motion.div
@@ -290,45 +263,6 @@ function SkillCircle({ name, percent, icon, delay }: { name: string, percent: nu
     >
       <div className="flex flex-row items-center justify-center w-full mb-2 gap-4">
         <Image src={icon} alt={name} width={iconSize} height={iconSize} className="z-0 rounded-xl" />
-        {/* <div className="relative flex items-center justify-center" style={{ width: radius * 2, height: radius * 2 }}>
-          <svg
-            className="absolute top-1/2 left-1/2 z-10"
-            style={{ transform: 'translate(-50%, -50%)' }}
-            height={radius * 2}
-            width={radius * 2}
-          >
-            <circle
-              stroke="#e5e7eb"
-              fill="#f3f4f6"
-              strokeWidth={stroke}
-              cx={radius}
-              cy={radius}
-              r={normalizedRadius}
-            />
-            <circle
-              fill={color.startsWith('#') ? `rgba(${hexToRgb(color)}, 0.18)` : color}
-              stroke="none"
-              cx={radius}
-              cy={radius}
-              r={normalizedRadius}
-            />
-            <circle
-              stroke={color}
-              fill="none"
-              strokeWidth={stroke}
-              strokeLinecap="round"
-              strokeDasharray={circumference}
-              strokeDashoffset={strokeDashoffset}
-              cx={radius}
-              cy={radius}
-              r={normalizedRadius}
-              style={{ transition: 'stroke-dashoffset 0.2s' }}
-            />
-          </svg>
-          <span className="absolute top-1/2 left-1/2 z-20 text-blue-600 font-bold text-xs" style={{ transform: 'translate(-50%, -50%)' }}>
-            {displayPercent}%
-          </span>
-        </div> */}
       </div>
       <div className="text-gray-900 dark:text-gray-200 text-lg font-semibold mb-1">{name}</div>
     </motion.div>
