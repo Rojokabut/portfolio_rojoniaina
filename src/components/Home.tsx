@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import React from "react";
 import { Download } from "lucide-react";
+import Modal from "./Modal";
 
 export default function Home() {
   // Fonction de scroll smooth vers la section contact
@@ -13,6 +14,19 @@ export default function Home() {
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
+  };
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  // Fonction pour lancer le téléchargement du CV
+  const handleDownloadCV = () => {
+    setModalOpen(false);
+    // Crée un lien temporaire pour télécharger le fichier
+    const link = document.createElement("a");
+    link.href = "/cv_ravelomanana_rojoniaina.pdf";
+    link.download = "cv_ravelomanana_rojoniaina.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
   return (
     <main id="home" className="flex flex-col items-center justify-center min-h-[80vh] w-full bg-transparent pt-24">
@@ -91,12 +105,12 @@ export default function Home() {
           </motion.p>
 
           <motion.a
-            href="#contact"
+            href="#"
             className="flex items-center gap-2 mt-4 px-7 py-3 rounded-lg bg-[var(--primary)] text-white font-semibold shadow-lg hover:brightness-95 transition-all text-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay: 0.7 } } }}
-            onClick={handleContactScroll}
+            onClick={(e) => { e.preventDefault(); setModalOpen(true); }}
           >
             <span>
               Download CV
@@ -105,6 +119,13 @@ export default function Home() {
           </motion.a>
         </motion.div>
       </motion.div>
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onConfirm={handleDownloadCV}
+        title="Télécharger le CV ?"
+        description="Voulez-vous télécharger le CV de Rojo Niaina ?"
+      />
     </main>
   );
 }
