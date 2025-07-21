@@ -7,14 +7,6 @@ import { Download } from "lucide-react";
 import Modal from "./Modal";
 
 export default function Home() {
-  // Fonction de scroll smooth vers la section contact
-  const handleContactScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.getElementById("contact");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   const [modalOpen, setModalOpen] = React.useState(false);
 
   // Fonction pour lancer le téléchargement du CV
@@ -41,30 +33,7 @@ export default function Home() {
           }
         }}
       >
-        {/* Photo de profil avec halo animé */}
-        {/* <motion.div
-          className="relative "
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            show: { opacity: 1, y: 0, transition: { type: "spring", duration: 0.8 } }
-          }}
-          whileHover={{ scale: 1.04, }}
-        >
-          <motion.div
-            className="absolute -inset-4 rounded-full opacity-40 blur-2xl animate-pulse z-0"
-            animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.6, 0.4] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          />
-          <Image
-            src="/photo.jpg"
-            alt="Photo de profil"
-            width={128}
-            height={128}
-            className="rounded-full relative z-10 border-4 border-blue-700 group-hover:shadow-blue-400/40 transition duration-300 w-40 h-40 md:w-64 md:h-64"
-            // priority
-            // fill
-          />
-        </motion.div> */}
+       
         <motion.div
           className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-70 md:h-70 rounded-full overflow-hidden"
           whileHover={{ scale: 1.04, boxShadow: "0 0 32px 8px #60a5fa55" }}
