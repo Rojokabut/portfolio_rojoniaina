@@ -14,8 +14,8 @@ export default function Home() {
     setModalOpen(false);
     // Crée un lien temporaire pour télécharger le fichier
     const link = document.createElement("a");
-    link.href = "/cv_ravelomanana_rojoniaina.pdf";
-    link.download = "cv_ravelomanana_rojoniaina.pdf";
+    link.href = "/CV_RAVELOMANANA_Rojoniaina.pdf";
+    link.download = "CV_RAVELOMANANA_Rojoniaina.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
